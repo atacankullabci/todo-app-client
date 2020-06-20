@@ -1,0 +1,80 @@
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #itemForm="ngForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" [(ngModel)]="item.name"
+               class="form-control"
+               id="name"
+               name="name"
+               placeholder="Enter item name"
+               required #name="ngModel">
+      </div>
+      <div [hidden]="!name.pristine" class="alert alert-danger">Item name is required</div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" [(ngModel)]="item.description"
+               class="form-control"
+               id="description"
+               name="description"
+               placeholder="Enter item description">
+      </div>
+
+      <div class="form-group">
+        <label for="deadline">Deadline</label>
+
+        <input class="form-control" type="date" id="deadline" name="deadline"
+               [(ngModel)]="item.deadline"
+               placeholder="yyyy-MM-dd" #deadline="ngModel"/>
+      </div>
+      <div [hidden]="!deadline.pristine" class="alert alert-danger">Item deadline is required</div>
+
+      <div class="form-group">
+        <label for="status">Status</label>
+
+        <select [(ngModel)]="item.status"
+                class="form-control"
+                id="status"
+                name="status" #status="ngModel">
+          <option
+            value="DONE"><span>Done</span></option>
+          <option selected
+                  value="UNDONE"><span>Undone</span></option>
+        </select>
+      </div>
+      <div [hidden]="!status.pristine" class="alert alert-danger">Item Status is required</div>
+
+      <div class="form-group">
+        <label for="dependency">Dependent</label>
+        <select [(ngModel)]="item.dependency"
+                class="form-control"
+                id="dependency"
+                name="dependency" #dependency="ngModel">
+          <option
+            value="DEPENDENT"><span>Dependent</span></option>
+          <option selected
+                  value="NOT_DEPENDENT"><span>Not Dependent</span></option>
+        </select>
+      </div>
+      <div [hidden]="!dependency.pristine" class="alert alert-danger">Item Dependency is required</div>
+
+      <button (click)="previousState()"
+              class="btn btn-dark mr-2"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Cancel">
+        <i class="fa fa-ban mr-2"></i>
+        <span>Cancel</span>
+      </button>
+      <button type="submit" [disabled]="!itemForm.form.valid"
+              class="btn btn-success"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Submit">
+        <i class="fa fa-check mr-2"></i>
+        <span>Submit</span>
+      </button>
+    </form>
+  </div>
+</div>

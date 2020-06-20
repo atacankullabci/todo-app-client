@@ -1,0 +1,33 @@
+<div class="card my-5">
+  <div class="card-body">
+    <form #todoForm="ngForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" [(ngModel)]="todo.todoName"
+               class="form-control"
+               id="name"
+               name="name"
+               placeholder="Enter the To-Do list name"
+               required #name="ngModel">
+      </div>
+      <div [hidden]="!name.pristine" class="alert alert-danger">To-Do List name is required</div>
+      <button (click)="previousState()"
+              class="btn btn-dark mr-2"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Cancel">
+        <i class="fa fa-ban mr-2"></i>
+        <span>Cancel</span>
+      </button>
+
+      <button (click)="onSubmit()" type="submit" [disabled]="!todoForm.form.valid"
+              class="btn btn-success"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Submit">
+        <i class="fa fa-check mr-2"></i>
+        <span>Submit</span>
+      </button>
+    </form>
+  </div>
+</div>

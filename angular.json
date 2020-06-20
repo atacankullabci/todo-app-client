@@ -24,9 +24,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+            ]
           },
           "configurations": {
             "production": {
@@ -88,9 +92,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+            ]
           }
         },
         "lint": {
@@ -119,6 +127,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "todo-app-client"
+    }
+  },
+  "defaultProject": "todo-app-client",
+  "cli": {
+    "analytics": "d878ee5a-1a1b-478d-8daf-125d32ff601a"
+  }
 }

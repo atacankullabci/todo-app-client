@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {AuthenticationService} from './authentication/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'todo-app-client';
+
+  title: string;
+
+  constructor(private loginService: AuthenticationService) {
+    this.title = 'To Do List';
+    this.authenticate();
+  }
+
+  authenticate(): boolean {
+    if (this.loginService.isUserLoggedIn()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

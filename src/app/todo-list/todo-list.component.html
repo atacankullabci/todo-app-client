@@ -1,0 +1,54 @@
+<div class="card my-5">
+  <div class="card-body">
+    <div class="row justify-content-end mb-2 mr-2">
+      <button type="submit" [routerLink]="['todo-form']"
+              class="btn btn-success" style="color:white; cursor:pointer;"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="New To-Do List">
+        <i class="fa fa-plus mr-1"></i>
+      </button>
+    </div>
+
+    <table class="table table-hover table-bordered">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col" style="width: 85%">To Do List Name</th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let todo of todos">
+        <td>{{todo.todoName}}</td>
+        <td>
+          <div class="row justify-content-md-center">
+            <button type="submit" [routerLink]="['/todo-form', todo.id, 'edit']"
+                    class="btn btn-primary mr-2" style="color:white; cursor:pointer;"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Change your To-Do List Name">
+              <i class="fa fa-pencil"></i>
+            </button>
+
+            <button type="submit" class="btn btn-danger mr-2" style="color:white; cursor:pointer;"
+                    (click)="onDelete(todo.id)"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Delete To-Do List">
+              <i class="fa fa-trash"></i>
+            </button>
+
+            <button type="submit" class="btn btn-warning" style="color:white; cursor:pointer;"
+                    [routerLink]="['item-list', todo.id]"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Inspect your To-Do Items">
+              <i class="fa fa-list"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

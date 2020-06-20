@@ -1,0 +1,72 @@
+<div class="card my-5">
+  <div class="card-body">
+    <div class="container">
+      <div class="row justify-content-between mb-3">
+        <button [routerLink]="['/todo-list']"
+                class="btn btn-dark mr-2"
+                data-toggle="tooltip"
+                data-placement="top"
+                title="Return to To-Do List">
+          <i class="fa fa-arrow-left"></i>
+        </button>
+        <button type="submit" [routerLink]="['item-form']"
+                class="btn btn-success" style="color:white; cursor:pointer;"
+                data-toggle="tooltip"
+                data-placement="top"
+                title="Add a New Item">
+          <i class="fa fa-plus"></i>
+        </button>
+      </div>
+    </div>
+    <table class="table table-bordered table-hover">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Item Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Deadline</th>
+        <th scope="col">Status</th>
+        <th scope="col">Dependency</th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of items">
+        <td>
+          <div class="form-check">
+            <input type="checkbox" [checked]="isDone(item.status)" (change)="checkAsDone(item)"
+                   data-toggle="tooltip"
+                   data-placement="top"
+                   title="Done / Undone Item"/>
+          </div>
+        </td>
+        <td>{{item.name}}</td>
+        <td>{{item.description}}</td>
+        <td>{{item.deadline}}</td>
+        <td>{{item.status}}</td>
+        <td>{{item.dependency}}</td>
+        <td>
+          <div class="row justify-content-md-center">
+            <button [disabled]="isDone(item.status)" type="submit"
+                    [routerLink]="['item-form', item.id, 'edit']"
+                    class="btn btn-primary mr-2" style="color:white; cursor:pointer;"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Edit your Item">
+              <i class="fa fa-pencil"></i>
+            </button>
+
+            <button type="submit" class="btn btn-danger" style="color:white; cursor:pointer;"
+                    (click)="onDelete(item.id)"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Delete Item">
+              <i class="fa fa-trash"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
