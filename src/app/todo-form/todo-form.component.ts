@@ -4,7 +4,7 @@ import {TodoComponent} from '../todo/todo.component';
 import {TodoService} from '../todo/todo.service';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {AuthenticationService} from '../authentication/authentication.service';
+import {LoginService} from '../authentication/login.service';
 import {UserService} from '../user/user.service';
 
 @Component({
@@ -23,7 +23,7 @@ export class TodoFormComponent implements OnInit {
     private router: Router,
     private todoService: TodoService,
     private userService: UserService,
-    private loginservice: AuthenticationService,
+    private loginservice: LoginService,
   ) {
   }
 

@@ -37,7 +37,6 @@ export class ItemListComponent implements OnInit {
   }
 
   checkAsDone(item) {
-    debugger;
     if (item.status === 'UNDONE') {
       item.status = 'DONE';
     } else {

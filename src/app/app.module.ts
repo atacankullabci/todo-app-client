@@ -6,14 +6,14 @@ import {AppComponent} from './app.component';
 import {UserComponent} from './user/user.component';
 import {ItemComponent} from './item/item.component';
 import {TodoComponent} from './todo/todo.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {ItemFormComponent} from './item-form/item-form.component';
 import {TodoListComponent} from './todo-list/todo-list.component';
 import {TodoFormComponent} from './todo-form/todo-form.component';
 import {ItemListComponent} from './item-list/item-list.component';
-import {LoginComponent} from './login/login.component';
-import {LogoutComponent} from './logout/logout.component';
+import {LoginComponent} from './shared/login/login.component';
+import {LogoutComponent} from './shared/logout/logout.component';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 
@@ -36,7 +36,8 @@ import {FooterComponent} from './footer/footer.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
