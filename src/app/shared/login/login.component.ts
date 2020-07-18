@@ -10,9 +10,6 @@ import {FormBuilder} from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-
-  username = '';
-  password = '';
   token = '';
 
   loginForm = this.fb.group({
@@ -26,13 +23,13 @@ export class LoginComponent {
   }
 
   login() {
-    debugger;
     this.loginService.login({
         username: this.loginForm.get('username')!.value,
         password: this.loginForm.get('password')!.value
       }
     ).subscribe(
-      response => this.setToken(response)
+      response => this.setToken(response),
+      err => console.log(err)
     );
   }
 

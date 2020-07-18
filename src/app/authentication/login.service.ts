@@ -1,22 +1,21 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {Login} from '../core/login/login.model';
+import {AuthenticationProvider} from '../core/auth/auth-jwt.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  authUrl: string;
-
-  constructor(private http: HttpClient) {
-    this.authUrl = 'http://localhost:8080/api/auth';
+  constructor(private authenticationProvider: AuthenticationProvider) {
   }
 
   login(login: Login) {
-    const url = this.authUrl + '/login';
+    return this.authenticationProvider.login(login);
+  }
 
-    return this.http.post<Login>(`${url}`, login);
+  logOut() {
+    this.authenticationProvider.logout();
   }
 
   getLoggedUser() {
@@ -26,9 +25,5 @@ export class LoginService {
   isUserLoggedIn() {
     const user = sessionStorage.getItem('username');
     return !(user === null);
-  }
-
-  logOut() {
-    sessionStorage.removeItem('username');
   }
 }

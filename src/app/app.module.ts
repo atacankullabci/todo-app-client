@@ -16,6 +16,7 @@ import {LoginComponent} from './shared/login/login.component';
 import {LogoutComponent} from './shared/logout/logout.component';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
+import {SessionStorageService} from 'ngx-webstorage';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import {FooterComponent} from './footer/footer.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [SessionStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
