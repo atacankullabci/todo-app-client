@@ -4,8 +4,8 @@ import {TodoListComponent} from './todo-list/todo-list.component';
 import {ItemFormComponent} from './item-form/item-form.component';
 import {TodoFormComponent} from './todo-form/todo-form.component';
 import {ItemListComponent} from './item-list/item-list.component';
-import {LoginComponent} from './login/login.component';
-import {LogoutComponent} from './logout/logout.component';
+import {LoginComponent} from './shared/login/login.component';
+import {LogoutComponent} from './shared/logout/logout.component';
 import {AuthGuardService} from './authentication/auth-guard.service';
 
 

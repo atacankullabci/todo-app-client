@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AuthenticationService} from './authentication/authentication.service';
+import {LoginService} from './authentication/login.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,7 @@ export class AppComponent {
 
   title: string;
 
-  constructor(private loginService: AuthenticationService) {
+  constructor(private loginService: LoginService) {
     this.title = 'To Do List';
     this.authenticate();
   }
