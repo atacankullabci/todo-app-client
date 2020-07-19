@@ -12,11 +12,10 @@ export class AppComponent {
 
   constructor(private loginService: LoginService) {
     this.title = 'To Do List';
-    this.authenticate();
   }
 
   authenticate(): boolean {
-    if (this.loginService.isUserLoggedIn()) {
+    if (this.loginService.getAuthToken()) {
       return true;
     } else {
       return false;

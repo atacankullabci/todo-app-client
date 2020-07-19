@@ -35,5 +35,11 @@ export class LoginComponent {
 
   setToken(response) {
     this.token = response;
+    this.navigateToHomePage();
+  }
+
+  navigateToHomePage() {
+    debugger;
+    this.router.navigate(['/todo-list']);
   }
 }

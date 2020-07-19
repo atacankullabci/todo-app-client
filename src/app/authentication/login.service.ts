@@ -18,12 +18,16 @@ export class LoginService {
     this.authenticationProvider.logout();
   }
 
+  getAuthToken() {
+    return sessionStorage.getItem('authenticationToken');
+  }
+
   getLoggedUser() {
-    return sessionStorage.getItem('username');
+    return sessionStorage.getItem('authenticationToken');
   }
 
   isUserLoggedIn() {
-    const user = sessionStorage.getItem('username');
+    const user = sessionStorage.getItem('authenticationToken');
     return !(user === null);
   }
 }
