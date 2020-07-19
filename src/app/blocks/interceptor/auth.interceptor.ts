@@ -1,22 +1,24 @@
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
+import {LoginService} from '../../authentication/login.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  constructor(private loginService: LoginService) {
+  }
 
-    if (!req || !req.url || (req.url.startsWith('http') && !(req.url.startsWith('localhost:8080/api')))) {
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    debugger;
+    if (!req || !req.url || req.url.includes('/api/auth')) {
       return next.handle(req);
     }
 
-    const jwtToken = sessionStorage.getItem('authenticationToken');
+    const jwtToken = this.loginService.getAuthToken();
     if (jwtToken) {
       req = req.clone({
-        setHeaders: {
-          Authorization: 'Bearer ' + jwtToken,
-        },
+        headers: req.headers.set('Authorization', 'Bearer ' + jwtToken)
       });
     }
     return next.handle(req);

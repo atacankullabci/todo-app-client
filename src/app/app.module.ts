@@ -7,7 +7,7 @@ import {UserComponent} from './user/user.component';
 import {ItemComponent} from './item/item.component';
 import {TodoComponent} from './todo/todo.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ItemFormComponent} from './item-form/item-form.component';
 import {TodoListComponent} from './todo-list/todo-list.component';
 import {TodoFormComponent} from './todo-form/todo-form.component';
@@ -16,7 +16,7 @@ import {LoginComponent} from './shared/login/login.component';
 import {LogoutComponent} from './shared/logout/logout.component';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
-import {SessionStorageService} from 'ngx-webstorage';
+import {AuthInterceptor} from './blocks/interceptor/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,7 @@ import {SessionStorageService} from 'ngx-webstorage';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [SessionStorageService],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule {
