@@ -29,7 +29,6 @@ export class TodoFormComponent implements OnInit {
 
   ngOnInit() {
     this.todo = new TodoComponent();
-    this.fetchUser();
 
     this.toDoId$ = this.route.paramMap.pipe(map(paramMap => paramMap.get('id')));
     this.id = this.route.snapshot.paramMap.get('id');
@@ -39,16 +38,6 @@ export class TodoFormComponent implements OnInit {
       this.getItemList();
     }
     this.populateTodo();
-  }
-
-  fetchUser() {
-    const userName: string = this.loginservice.getLoggedUser();
-
-    if (userName) {
-      this.userService.getUserByUserName(userName).subscribe(response => {
-        this.todo.user = response.body;
-      });
-    }
   }
 
   populateTodo() {
