@@ -39,7 +39,6 @@ export class LoginComponent {
   }
 
   navigateToHomePage() {
-    debugger;
     this.router.navigate(['/todo-list']);
   }
 }

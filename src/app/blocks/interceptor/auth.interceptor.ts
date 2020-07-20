@@ -10,7 +10,6 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    debugger;
     if (!req || !req.url || req.url.includes('/api/auth')) {
       return next.handle(req);
     }
