@@ -17,6 +17,9 @@ import {LogoutComponent} from './shared/logout/logout.component';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import {AuthInterceptor} from './blocks/interceptor/auth.interceptor';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToastrModule} from 'ngx-toastr';
+import {SignupComponent} from './shared/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -32,13 +35,16 @@ import {AuthInterceptor} from './blocks/interceptor/auth.interceptor';
     LogoutComponent,
     HeaderComponent,
     FooterComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]

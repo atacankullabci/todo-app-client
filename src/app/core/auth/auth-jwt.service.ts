@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Login} from '../login/login.model';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {Signup} from '../signup/signup.model';
 
 type JwtToken = {
   authenticationToken: string;
@@ -29,6 +30,11 @@ export class AuthenticationProvider {
 
   logout() {
     sessionStorage.clear();
+  }
+
+  sendVerificationMail(signup: Signup) {
+    debugger;
+    return this.http.post<void>(this.authUrl + '/sign-up', signup);
   }
 
   private authenticateSuccess(response: JwtToken): void {

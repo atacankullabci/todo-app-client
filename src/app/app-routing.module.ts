@@ -6,12 +6,14 @@ import {TodoFormComponent} from './todo-form/todo-form.component';
 import {ItemListComponent} from './item-list/item-list.component';
 import {LoginComponent} from './shared/login/login.component';
 import {LogoutComponent} from './shared/logout/logout.component';
+import {SignupComponent} from './shared/signup/signup.component';
 
 
 const routes: Routes = [
 
   {path: 'login', component: LoginComponent},
   {path: 'logout', component: LogoutComponent},
+  {path: 'sign-up', component: SignupComponent},
 
   {path: 'todo-list/todo-form', component: TodoFormComponent},
   {path: 'todo-list', component: TodoListComponent},
