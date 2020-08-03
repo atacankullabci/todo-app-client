@@ -2,7 +2,7 @@
   <div class="modal-dialog">
     <div class="modal-content" style="border: none !important">
       <div class="panel-heading">
-        <h3 class="panel-title">Sign In</h3>
+        <h3 class="panel-title">Login</h3>
       </div>
       <div class="panel-body">
         <form role="form" class="form" (ngSubmit)="login()" [formGroup]="loginForm">
@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-4 ">
                   <div class="float-right">
-                    <button class="btn btn-dark">
+                    <button class="btn btn-dark" type="button" [routerLink]="'/sign-up'">
                       Sign Up
                     </button>
                   </div>

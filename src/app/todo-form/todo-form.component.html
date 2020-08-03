@@ -10,7 +10,9 @@
                placeholder="Enter the To-Do list name"
                required #name="ngModel">
       </div>
-      <div [hidden]="!name.pristine" class="alert alert-danger">To-Do List name is required</div>
+      <div [hidden]="name.invalid && (name.dirty || name.touched)"
+           class="alert alert-danger">To-Do List name is required
+      </div>
       <button (click)="previousState()"
               class="btn btn-dark mr-2"
               data-toggle="tooltip"
