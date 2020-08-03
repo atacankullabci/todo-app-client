@@ -6,6 +6,7 @@ import {map} from 'rxjs/operators';
 
 type JwtToken = {
   authenticationToken: string;
+  refreshToken: string;
 };
 
 @Injectable({providedIn: 'root'})
@@ -31,9 +32,10 @@ export class AuthenticationProvider {
   }
 
   private authenticateSuccess(response: JwtToken): void {
-    const jwtToken = response.authenticationToken;
+    const jwtToken = response;
     if (jwtToken) {
-      sessionStorage.setItem('authenticationToken', jwtToken);
+      sessionStorage.setItem('authenticationToken', jwtToken.authenticationToken);
+      sessionStorage.setItem('refreshToken', jwtToken.refreshToken);
     }
   }
 }
