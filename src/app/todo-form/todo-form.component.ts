@@ -4,8 +4,6 @@ import {TodoComponent} from '../todo/todo.component';
 import {TodoService} from '../todo/todo.service';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {LoginService} from '../authentication/login.service';
-import {UserService} from '../user/user.service';
 
 @Component({
   selector: 'app-todo-form',
@@ -22,8 +20,6 @@ export class TodoFormComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private todoService: TodoService,
-    private userService: UserService,
-    private loginservice: LoginService,
   ) {
   }
 
@@ -32,11 +28,6 @@ export class TodoFormComponent implements OnInit {
 
     this.toDoId$ = this.route.paramMap.pipe(map(paramMap => paramMap.get('id')));
     this.id = this.route.snapshot.paramMap.get('id');
-    if (!this.id) {
-      this.todo.itemList = [];
-    } else {
-      this.getItemList();
-    }
     this.populateTodo();
   }
 
@@ -46,14 +37,6 @@ export class TodoFormComponent implements OnInit {
         this.todo.todoName = response.body.todoName;
       });
     }
-  }
-
-  getItemList() {
-    this.todoService.fetchItems(this.id).subscribe(response => this.setItemList(response));
-  }
-
-  setItemList(response) {
-    this.todo.itemList = response.body.valueOf();
   }
 
   onSubmit() {
