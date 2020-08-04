@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {AuthenticationProvider} from '../../core/auth/auth-jwt.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -18,14 +19,16 @@ export class SignupComponent implements OnInit {
   });
 
 
-  constructor(private fb: FormBuilder, private authProvider: AuthenticationProvider) {
+  constructor(private fb: FormBuilder, private authProvider: AuthenticationProvider,
+              private route: Router) {
   }
 
   ngOnInit(): void {
   }
 
   signup() {
-    this.authProvider.sendVerificationMail(this.signupForm.value).subscribe();
+    this.authProvider.sendVerificationMail(this.signupForm.value).subscribe(() => {
+      this.route.navigate(['/login']);
+    });
   }
-
 }

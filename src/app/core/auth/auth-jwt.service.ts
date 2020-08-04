@@ -33,7 +33,6 @@ export class AuthenticationProvider {
   }
 
   sendVerificationMail(signup: Signup) {
-    debugger;
     return this.http.post<void>(this.authUrl + '/sign-up', signup);
   }
 
