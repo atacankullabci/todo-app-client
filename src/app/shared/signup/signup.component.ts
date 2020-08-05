@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {AuthenticationProvider} from '../../core/auth/auth-jwt.service';
 import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-signup',
@@ -19,8 +20,10 @@ export class SignupComponent implements OnInit {
   });
 
 
-  constructor(private fb: FormBuilder, private authProvider: AuthenticationProvider,
-              private route: Router) {
+  constructor(private fb: FormBuilder,
+              private authProvider: AuthenticationProvider,
+              private route: Router,
+              private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -29,6 +32,8 @@ export class SignupComponent implements OnInit {
   signup() {
     this.authProvider.sendVerificationMail(this.signupForm.value).subscribe(() => {
       this.route.navigate(['/login']);
+    }, () => {
+      this.toastr.error('Registration failed ! Please try again');
     });
   }
 }

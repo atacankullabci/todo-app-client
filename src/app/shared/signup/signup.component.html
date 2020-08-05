@@ -34,19 +34,24 @@
             </div>
             <div class="form-group">
               <input type="text" class="form-control" name="firstName"
-                     id="firstName" placeholder="First Name"
+                     id="firstName" placeholder="First Name *"
                      formControlName="firstName">
+              <div *ngIf="signupForm.get('firstName').invalid && signupForm.get('firstName').touched"
+                   class="alert alert-danger login-validator">Firstname is required
+              </div>
             </div>
             <div class="form-group">
               <input type="text" class="form-control" name="lastName"
-                     id="lastName" placeholder="Last Name"
+                     id="lastName" placeholder="Last Name *"
                      formControlName="lastName">
+              <div *ngIf="signupForm.get('lastName').invalid && signupForm.get('lastName').touched"
+                   class="alert alert-danger login-validator">Lastname is required
+              </div>
             </div>
             <div class="contain">
               <div class="row justify-content-between">
                 <div class="col-4 ">
-                  <button class="btn btn-success"
-                          type="submit">
+                  <button class="btn btn-success" [disabled]="!signupForm.valid">
                     Sign Up
                   </button>
                 </div>
