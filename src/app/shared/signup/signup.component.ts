@@ -31,8 +31,9 @@ export class SignupComponent implements OnInit {
 
   signup() {
     this.authProvider.sendVerificationMail(this.signupForm.value).subscribe(() => {
+      this.toastr.success('Verification mail has been sent');
       this.route.navigate(['/login']);
-    }, () => {
+    }, err => {
       this.toastr.error('Registration failed ! Please try again');
     });
   }
