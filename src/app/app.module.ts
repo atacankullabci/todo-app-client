@@ -20,6 +20,7 @@ import {AuthInterceptor} from './blocks/interceptor/auth.interceptor';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
 import {SignupComponent} from './shared/signup/signup.component';
+import {GeneralInterceptor} from './blocks/interceptor/general.inceptor';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,18 @@ import {SignupComponent} from './shared/signup/signup.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot()
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: GeneralInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

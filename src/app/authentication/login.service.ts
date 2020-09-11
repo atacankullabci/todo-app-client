@@ -22,10 +22,6 @@ export class LoginService {
     return sessionStorage.getItem('authenticationToken');
   }
 
-  getLoggedUser() {
-    return sessionStorage.getItem('authenticationToken');
-  }
-
   isUserLoggedIn() {
     const user = sessionStorage.getItem('authenticationToken');
     return !(user === null);

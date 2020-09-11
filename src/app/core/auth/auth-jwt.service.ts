@@ -4,6 +4,7 @@ import {Login} from '../login/login.model';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {Signup} from '../signup/signup.model';
+import {Router} from '@angular/router';
 
 type JwtToken = {
   authenticationToken: string;
@@ -15,7 +16,7 @@ export class AuthenticationProvider {
 
   authUrl: string;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.authUrl = 'http://localhost:8080/api/auth';
   }
 
@@ -30,6 +31,7 @@ export class AuthenticationProvider {
 
   logout() {
     sessionStorage.clear();
+    this.router.navigate(['/']);
   }
 
   sendVerificationMail(signup: Signup) {
